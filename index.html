@@ -602,6 +602,17 @@
             font-size: 13px;
             line-height: 1.6;
         }
+        /* ===== MOBILE PERF ===== */
+        @media (max-width: 768px) {
+            .star { animation: none !important; opacity: 0.6; }
+            .practice-card { animation: none !important; }
+            .practice-card::before { animation: none !important; display: none; }
+            .about-photo { animation: spin 20s linear infinite; }
+            .cta-button { animation: none !important; }
+            .header::before { animation: spin 8s linear infinite; }
+            .side-decoration { display: none; }
+            .guarantee-box { animation: none !important; border-color: #ff0; box-shadow: 0 0 10px #ff0; }
+        }
     </style>
 </head>
 <body>
@@ -908,6 +919,8 @@
 
 <script>
 // ===== FIRE CURSOR TRAIL (CANVAS) =====
+const isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
 const fireCanvas = document.createElement('canvas');
 fireCanvas.id = 'fire-canvas';
 document.body.appendChild(fireCanvas);
@@ -920,7 +933,7 @@ function resizeCanvas() {
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
-const MAX_PARTICLES = 80;
+const MAX_PARTICLES = isMobile ? 40 : 80;
 const particles = [];
 const fireColors = ['#ffff00', '#ff6600', '#ff0000', '#ff3300', '#ffcc00'];
 const sparkleColors = ['#ffff00', '#ff6600', '#ff0000', '#00ffff', '#ff69b4'];
@@ -937,14 +950,14 @@ function spawnFire(x, y, count) {
             size: Math.random() * 15 + 5,
             opacity: 1,
             color: fireColors[Math.floor(Math.random() * fireColors.length)],
-            type: 'fire'
         });
     }
 }
 
 function spawnSparkles(x, y) {
-    for (let i = 0; i < 12 && particles.length < MAX_PARTICLES; i++) {
-        const angle = (Math.PI * 2 / 12) * i;
+    const count = isMobile ? 6 : 12;
+    for (let i = 0; i < count && particles.length < MAX_PARTICLES; i++) {
+        const angle = (Math.PI * 2 / count) * i;
         const speed = Math.random() * 4 + 2;
         particles.push({
             x, y,
@@ -953,59 +966,69 @@ function spawnSparkles(x, y) {
             size: 6,
             opacity: 1,
             color: sparkleColors[Math.floor(Math.random() * sparkleColors.length)],
-            type: 'sparkle'
+            sparkle: true,
         });
     }
 }
 
+let animRunning = false;
 function animateParticles() {
+    if (particles.length === 0) {
+        ctx.clearRect(0, 0, fireCanvas.width, fireCanvas.height);
+        animRunning = false;
+        return;
+    }
+    animRunning = true;
+
     ctx.clearRect(0, 0, fireCanvas.width, fireCanvas.height);
-    ctx.globalCompositeOperation = 'screen';
 
     for (let i = particles.length - 1; i >= 0; i--) {
         const p = particles[i];
         p.x += p.vx;
-        p.y += p.vy - (p.type === 'fire' ? 1 : 0);
-        p.opacity -= p.type === 'fire' ? 0.03 : 0.025;
-        if (p.type === 'fire') p.size *= 0.97;
+        p.y += p.vy - (p.sparkle ? 0 : 1);
+        p.opacity -= p.sparkle ? 0.025 : 0.03;
+        if (!p.sparkle) p.size *= 0.97;
 
         if (p.opacity <= 0) {
             particles.splice(i, 1);
             continue;
         }
 
+        // Draw glow with a radial gradient instead of shadowBlur
+        const r = p.size;
+        const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, r);
+        grad.addColorStop(0, p.color);
+        grad.addColorStop(1, 'transparent');
         ctx.globalAlpha = p.opacity;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size / 2, 0, Math.PI * 2);
-        ctx.fillStyle = p.color;
-        ctx.shadowColor = p.color;
-        ctx.shadowBlur = p.size;
-        ctx.fill();
+        ctx.fillStyle = grad;
+        ctx.fillRect(p.x - r, p.y - r, r * 2, r * 2);
     }
 
     ctx.globalAlpha = 1;
-    ctx.shadowBlur = 0;
     requestAnimationFrame(animateParticles);
 }
-requestAnimationFrame(animateParticles);
 
-// Mouse/touch input
-let lastEmit = 0;
-function handleMove(x, y) {
-    const now = performance.now();
-    if (now - lastEmit < 30) return; // throttle to ~33fps input
-    lastEmit = now;
-    spawnFire(x, y, 3);
+function ensureAnimRunning() {
+    if (!animRunning) {
+        animRunning = true;
+        requestAnimationFrame(animateParticles);
+    }
 }
-document.addEventListener('mousemove', (e) => handleMove(e.clientX, e.clientY));
-document.addEventListener('touchmove', (e) => {
-    const t = e.touches[0];
-    handleMove(t.clientX, t.clientY);
-}, { passive: true });
+
+// Mouse only — no touchmove (it hijacks scrolling and causes flashing)
+let lastEmit = 0;
+document.addEventListener('mousemove', (e) => {
+    const now = performance.now();
+    if (now - lastEmit < 30) return;
+    lastEmit = now;
+    spawnFire(e.clientX, e.clientY, 3);
+    ensureAnimRunning();
+});
 
 // ===== STARS BACKGROUND =====
 const starsContainer = document.getElementById('stars');
-for (let i = 0; i < 150; i++) {
+const starCount = isMobile ? 40 : 150;
+for (let i = 0; i < starCount; i++) {
     const star = document.createElement('div');
     star.className = 'star';
     const size = Math.random() * 3 + 1;
@@ -1062,8 +1085,11 @@ const counterInterval = setInterval(() => {
     counterElement.textContent = String(displayCount).padStart(7, '0');
 }, 100);
 
-// ===== RANDOM SPARKLES ON CLICK =====
-document.addEventListener('click', (e) => spawnSparkles(e.clientX, e.clientY));
+// ===== RANDOM SPARKLES ON CLICK/TAP =====
+document.addEventListener('click', (e) => {
+    spawnSparkles(e.clientX, e.clientY);
+    ensureAnimRunning();
+});
 
 // ===== KONAMI CODE EASTER EGG =====
 let konamiProgress = 0;

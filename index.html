@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>★☆★ MAGGIE PEACH LAW ★☆★ Criminal Defense & Family Law ★☆★ CALL NOW!!!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+
+        body {
+            font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+            background: #000 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4"><rect width="4" height="4" fill="%23000"/><rect width="1" height="1" fill="%23222"/></svg>') repeat;
+            color: #ffff00;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* ===== STARS BACKGROUND ===== */
+        .stars {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 1.5s infinite alternate;
+        }
+        @keyframes twinkle {
+            0% { opacity: 0.2; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* ===== FIRE CURSOR ===== */
+        .fire-particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 99999;
+            border-radius: 50%;
+            mix-blend-mode: screen;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .content {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* ===== TOP BANNER ===== */
+        .top-banner {
+            background: linear-gradient(90deg, #ff0000, #ff6600, #ffff00, #00ff00, #0099ff, #6633ff, #ff0000);
+            background-size: 600% 100%;
+            animation: rainbow-slide 3s linear infinite;
+            padding: 4px 0;
+            text-align: center;
+            font-size: 11px;
+            color: #000;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        @keyframes rainbow-slide {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 600% 50%; }
+        }
+
+        /* ===== UNDER CONSTRUCTION ===== */
+        .under-construction {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            padding: 8px;
+            background: repeating-linear-gradient(45deg, #000, #000 10px, #ff0 10px, #ff0 20px);
+        }
+        .under-construction span {
+            background: #000;
+            padding: 2px 12px;
+            font-size: 14px;
+            color: #ff0;
+            animation: blink-text 0.5s infinite;
+        }
+        .construction-gif {
+            width: 40px;
+            height: 40px;
+            background: #ff0;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            animation: spin 2s linear infinite;
+            display: inline-block;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes blink-text { 50% { opacity: 0; } }
+
+        /* ===== MARQUEE ===== */
+        .marquee-container {
+            background: #000080;
+            border-top: 3px solid #ff0;
+            border-bottom: 3px solid #ff0;
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 8px 0;
+        }
+        .marquee-text {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+            font-size: 18px;
+            color: #ff0;
+            font-weight: bold;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(100vw); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            text-align: center;
+            padding: 30px 20px;
+            background: radial-gradient(ellipse at center, #1a0033 0%, #000 70%);
+            border-bottom: 5px double #ff0;
+            position: relative;
+        }
+        .header::before {
+            content: '⚖️';
+            font-size: 80px;
+            display: block;
+            animation: spin 4s linear infinite;
+            filter: drop-shadow(0 0 20px #ff0) drop-shadow(0 0 40px #ff6600);
+        }
+        .firm-name {
+            font-family: 'Permanent Marker', cursive;
+            font-size: clamp(36px, 8vw, 80px);
+            background: linear-gradient(180deg, #ff0, #ff6600, #ff0000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 10px #ff6600) drop-shadow(0 0 30px #ff0000);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            animation: pulse-glow 1.5s ease-in-out infinite alternate;
+        }
+        @keyframes pulse-glow {
+            0% { filter: drop-shadow(0 0 10px #ff6600) drop-shadow(0 0 30px #ff0000); transform: scale(1); }
+            100% { filter: drop-shadow(0 0 20px #ff6600) drop-shadow(0 0 50px #ff0000) drop-shadow(0 0 80px #ff0); transform: scale(1.02); }
+        }
+        .tagline {
+            font-size: clamp(14px, 3vw, 24px);
+            color: #00ffff;
+            margin-top: 10px;
+            animation: blink-text 1s infinite;
+            text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+        }
+        .subtitle {
+            font-size: clamp(11px, 2vw, 16px);
+            color: #ff69b4;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* ===== FLAME DIVIDER ===== */
+        .flame-divider {
+            text-align: center;
+            font-size: 30px;
+            padding: 5px;
+            background: linear-gradient(180deg, transparent, rgba(255,102,0,0.2), transparent);
+            letter-spacing: 8px;
+        }
+
+        /* ===== SECTIONS ===== */
+        .section {
+            padding: 30px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .section-title {
+            text-align: center;
+            font-size: clamp(22px, 5vw, 36px);
+            color: #ff0;
+            text-shadow: 2px 2px #ff0000, 0 0 10px #ff6600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .section-title::before, .section-title::after {
+            content: ' ★ ';
+            color: #ff0;
+        }
+
+        /* ===== PRACTICE AREAS ===== */
+        .practice-areas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .practice-card {
+            background: linear-gradient(135deg, #1a0033, #330066);
+            border: 3px solid #ff0;
+            border-radius: 0;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 15px #ff660080, inset 0 0 15px #ff000040;
+            animation: card-float 3s ease-in-out infinite alternate;
+            position: relative;
+            overflow: hidden;
+        }
+        .practice-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, rgba(255,255,0,0.1), transparent, rgba(255,0,0,0.1), transparent);
+            animation: spin 6s linear infinite;
+        }
+        .practice-card > * { position: relative; z-index: 1; }
+        @keyframes card-float {
+            0% { transform: translateY(0) rotate(-0.5deg); }
+            100% { transform: translateY(-8px) rotate(0.5deg); }
+        }
+        .practice-card h3 {
+            font-size: 20px;
+            color: #00ffff;
+            margin: 10px 0;
+            text-shadow: 0 0 10px #00ffff;
+        }
+        .practice-card .emoji { font-size: 50px; display: block; }
+        .practice-card p { color: #fff; font-size: 13px; line-height: 1.6; }
+
+        /* ===== STATS ===== */
+        .stats-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 30px 20px;
+            background: linear-gradient(90deg, #000080, #4b0082, #000080);
+            border-top: 3px solid #ff0;
+            border-bottom: 3px solid #ff0;
+        }
+        .stat {
+            text-align: center;
+            min-width: 120px;
+        }
+        .stat-number {
+            font-size: 42px;
+            font-weight: bold;
+            color: #ff0;
+            text-shadow: 0 0 20px #ff6600;
+            font-family: 'Permanent Marker', cursive;
+        }
+        .stat-label {
+            font-size: 12px;
+            color: #00ffff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .testimonial {
+            background: #1a1a2e;
+            border-left: 5px solid #ff0;
+            border-right: 5px solid #ff0;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 0 10px #ff000060;
+        }
+        .testimonial::before {
+            content: '❝';
+            font-size: 60px;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            color: #ff660040;
+        }
+        .testimonial p {
+            color: #fff;
+            font-size: 14px;
+            line-height: 1.7;
+            font-style: italic;
+            padding-left: 40px;
+        }
+        .testimonial .author {
+            color: #ff69b4;
+            font-style: normal;
+            margin-top: 10px;
+            padding-left: 40px;
+            font-size: 12px;
+        }
+        .stars-rating {
+            color: #ff0;
+            font-size: 20px;
+            padding-left: 40px;
+        }
+
+        /* ===== ABOUT ===== */
+        .about-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+        .about-photo {
+            width: 200px;
+            height: 200px;
+            border: 5px solid #ff0;
+            box-shadow: 0 0 20px #ff6600, 0 0 40px #ff000080;
+            background: linear-gradient(135deg, #ff69b4, #ff6600, #ff0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            animation: spin 10s linear infinite;
+            border-radius: 50%;
+        }
+        .about-text {
+            flex: 1;
+            min-width: 280px;
+        }
+        .about-text p {
+            color: #fff;
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+        .about-text .highlight {
+            color: #ff0;
+            font-weight: bold;
+            text-shadow: 0 0 5px #ff6600;
+        }
+
+        /* ===== GUARANTEE ===== */
+        .guarantee-box {
+            border: 5px dashed #ff0;
+            padding: 25px;
+            text-align: center;
+            margin: 20px auto;
+            max-width: 700px;
+            background: repeating-linear-gradient(
+                -45deg,
+                #1a0033,
+                #1a0033 10px,
+                #0d001a 10px,
+                #0d001a 20px
+            );
+            animation: pulse-border 2s infinite;
+        }
+        @keyframes pulse-border {
+            0%, 100% { border-color: #ff0; box-shadow: 0 0 10px #ff0; }
+            50% { border-color: #ff0000; box-shadow: 0 0 30px #ff0000; }
+        }
+        .guarantee-box h3 {
+            color: #ff0;
+            font-size: 28px;
+            text-shadow: 2px 2px #ff0000;
+        }
+        .guarantee-box p {
+            color: #fff;
+            font-size: 12px;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+
+        /* ===== CTA ===== */
+        .cta-section {
+            text-align: center;
+            padding: 40px 20px;
+            background: radial-gradient(ellipse at center, #330000, #000);
+        }
+        .cta-phone {
+            font-size: clamp(28px, 6vw, 52px);
+            font-family: 'Permanent Marker', cursive;
+            color: #ff0;
+            text-shadow: 0 0 20px #ff0, 0 0 40px #ff6600, 0 0 60px #ff0000;
+            animation: pulse-glow 0.8s ease-in-out infinite alternate;
+            display: block;
+            margin: 15px 0;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 15px 50px;
+            background: linear-gradient(180deg, #ff0, #ff6600, #ff0000);
+            color: #000;
+            font-family: 'Comic Sans MS', cursive;
+            font-size: 22px;
+            font-weight: bold;
+            border: 4px outset #ff0;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            animation: cta-shake 0.3s infinite;
+            box-shadow: 0 0 20px #ff6600, 0 0 40px #ff000080;
+        }
+        @keyframes cta-shake {
+            0%, 100% { transform: rotate(-1deg) scale(1); }
+            25% { transform: rotate(1deg) scale(1.02); }
+            50% { transform: rotate(-1deg) scale(1); }
+            75% { transform: rotate(1deg) scale(1.02); }
+        }
+        .cta-button:hover {
+            background: linear-gradient(180deg, #fff, #ff0, #ff6600);
+        }
+        .cta-urgency {
+            color: #ff0000;
+            font-size: 16px;
+            margin-top: 15px;
+            animation: blink-text 0.7s infinite;
+            text-shadow: 0 0 10px #ff0000;
+        }
+
+        /* ===== VISITOR COUNTER ===== */
+        .visitor-counter {
+            text-align: center;
+            padding: 15px;
+            background: #000;
+            border-top: 2px solid #333;
+        }
+        .counter-display {
+            display: inline-block;
+            background: #001a00;
+            border: 2px inset #333;
+            padding: 5px 15px;
+            font-family: 'Courier New', monospace;
+            color: #00ff00;
+            font-size: 20px;
+            letter-spacing: 3px;
+        }
+        .visitor-counter p {
+            font-size: 11px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #000;
+            border-top: 3px solid #ff0;
+            font-size: 10px;
+            color: #666;
+            line-height: 2;
+        }
+        .footer a { color: #00ffff; }
+
+        /* ===== GUESTBOOK ===== */
+        .guestbook {
+            text-align: center;
+            padding: 15px;
+        }
+        .guestbook-btn {
+            display: inline-block;
+            padding: 8px 25px;
+            background: linear-gradient(180deg, #4b0082, #000);
+            border: 2px outset #9966ff;
+            color: #ff0;
+            font-family: 'Comic Sans MS', cursive;
+            font-size: 16px;
+            text-decoration: none;
+            animation: card-float 2s ease-in-out infinite alternate;
+        }
+
+        /* ===== WEBRING ===== */
+        .webring {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px;
+            font-size: 12px;
+        }
+        .webring a { color: #00ffff; text-decoration: underline; }
+
+        /* ===== MIDI PLAYER ===== */
+        .midi-notice {
+            text-align: center;
+            padding: 10px;
+            background: #1a0033;
+            border: 2px inset #666;
+            margin: 10px auto;
+            max-width: 400px;
+            font-size: 11px;
+            color: #ff69b4;
+        }
+        .midi-notice .note { animation: blink-text 0.5s infinite; display: inline-block; }
+
+        /* ===== FLOATING BADGES ===== */
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px;
+        }
+        .badge {
+            background: linear-gradient(180deg, #333, #000);
+            border: 2px outset #666;
+            padding: 4px 12px;
+            font-size: 10px;
+            color: #0f0;
+            font-family: 'Courier New', monospace;
+            white-space: nowrap;
+        }
+
+        /* ===== SCROLLING SIDE ARROWS ===== */
+        .side-decoration {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 30px;
+            animation: blink-text 1s infinite;
+            z-index: 50;
+            pointer-events: none;
+        }
+        .side-left { left: 5px; }
+        .side-right { right: 5px; }
+
+        /* ===== CUSTOM SCROLLBAR ===== */
+        ::-webkit-scrollbar { width: 14px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #ff0, #ff6600, #ff0000, #ff6600, #ff0);
+            border: 2px solid #000;
+        }
+
+        /* ===== RAINBOW TEXT UTILITY ===== */
+        .rainbow {
+            background: linear-gradient(90deg, #ff0000, #ff6600, #ffff00, #00ff00, #0099ff, #6633ff, #ff0000);
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbow-slide 2s linear infinite;
+        }
+
+        /* ===== SPARKLE DIVIDER ===== */
+        .sparkle-divider {
+            text-align: center;
+            padding: 5px;
+            font-size: 14px;
+            letter-spacing: 6px;
+            color: #ff0;
+            animation: blink-text 1.5s infinite;
+        }
+
+        /* ===== AWARD RIBBON ===== */
+        .award-section {
+            text-align: center;
+            padding: 20px;
+        }
+        .award {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #ffd700, #ff6600, #ffd700);
+            color: #000;
+            font-weight: bold;
+            font-size: 11px;
+            border: 3px double #000;
+            transform: rotate(-3deg);
+            box-shadow: 3px 3px 0 #000;
+        }
+        .award:nth-child(even) { transform: rotate(2deg); }
+        .award .trophy { font-size: 30px; display: block; margin-bottom: 5px; }
+
+        /* ===== EMERGENCY BANNER ===== */
+        .emergency-banner {
+            background: #ff0000;
+            color: #fff;
+            text-align: center;
+            padding: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            animation: emergency-flash 0.5s infinite;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        @keyframes emergency-flash {
+            0%, 100% { background: #ff0000; color: #fff; }
+            50% { background: #fff; color: #ff0000; }
+        }
+
+        /* ===== FAQ ===== */
+        .faq-item {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #0d001a;
+            border: 1px solid #ff660060;
+        }
+        .faq-item h4 {
+            color: #00ffff;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .faq-item p {
+            color: #ccc;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+<!-- STARS BACKGROUND -->
+<div class="stars" id="stars"></div>
+
+<!-- SIDE DECORATIONS -->
+<div class="side-decoration side-left">🔥<br>⚖️<br>🔥<br>⚖️<br>🔥</div>
+<div class="side-decoration side-right">🔥<br>⚖️<br>🔥<br>⚖️<br>🔥</div>
+
+<div class="content">
+
+    <!-- TOP BANNER -->
+    <div class="top-banner">
+        ★ BEST LAWYER IN THE TRI-STATE AREA (SELF-AWARDED) ★ NOW ACCEPTING CLIENTS ★ OPEN 25/8 ★ FREE PARKING ★
+    </div>
+
+    <!-- UNDER CONSTRUCTION -->
+    <div class="under-construction">
+        <div class="construction-gif"></div>
+        <span>🚧 SITE UNDER CONSTRUCTION 🚧</span>
+        <div class="construction-gif"></div>
+    </div>
+
+    <!-- MIDI NOTICE -->
+    <div class="midi-notice">
+        <span class="note">♪</span> For the full experience, please enable MIDI playback <span class="note">♪</span><br>
+        Now playing: justice_anthem_final_FINAL_v3.mid
+    </div>
+
+    <!-- MARQUEE -->
+    <div class="marquee-container">
+        <span class="marquee-text">
+            ⚖️ FREE CONSULTATION* ⚖️ EXPOSED TO JUSTICE? YOU MAY BE ENTITLED TO LEGAL REPRESENTATION ⚖️
+            CALL NOW!!! ⚖️ MAGGIE PEACH HASN'T LOST A CASE SHE'S CHOSEN TO TALK ABOUT ⚖️
+            NOW SERVING: CRIMINALS, FAMILIES, AND CRIMINAL FAMILIES ⚖️ SE HABLA LEGALESE ⚖️
+            DON'T GO TO JAIL — GO TO MAGGIE!!! ⚖️
+        </span>
+    </div>
+
+    <!-- HEADER -->
+    <div class="header">
+        <h1 class="firm-name">Maggie Peach Law</h1>
+        <div class="tagline">⚡ ATTORNEY AT RAW ⚡</div>
+        <div class="subtitle">"When life gives you charges, call a Peach" ™</div>
+    </div>
+
+    <!-- FLAME DIVIDER -->
+    <div class="flame-divider">🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥</div>
+
+    <!-- EMERGENCY BANNER -->
+    <div class="emergency-banner">
+        🚨 ARRESTED? DON'T TALK TO ANYONE EXCEPT MAGGIE 🚨
+    </div>
+
+    <!-- PRACTICE AREAS -->
+    <div class="section">
+        <h2 class="section-title">Practice Areas</h2>
+        <div class="practice-areas">
+            <div class="practice-card">
+                <span class="emoji">🚔</span>
+                <h3>Criminal Defense</h3>
+                <p>Did you do it? Don't answer that. Did the POLICE do everything right? That's the real question.
+                Maggie will find out. Maggie ALWAYS finds out.</p>
+                <p style="color:#ff0;margin-top:8px;font-size:11px;">DUI • Felonies • Misdemeanors • "Misunderstandings" • Oopsies</p>
+            </div>
+            <div class="practice-card">
+                <span class="emoji">👨‍👩‍👧‍👦</span>
+                <h3>Family Law</h3>
+                <p>Love is beautiful. Divorce is expensive. Let Maggie make sure it's expensive for the OTHER person.
+                Custody, support, the works.</p>
+                <p style="color:#ff0;margin-top:8px;font-size:11px;">Divorce • Custody • Support • Adoption • "It's Complicated"</p>
+            </div>
+            <div class="practice-card">
+                <span class="emoji">🚨</span>
+                <h3>Criminal Families</h3>
+                <p>Sometimes these practice areas overlap. We don't judge. That's literally the court's job, not ours.
+                Two birds, one retainer.</p>
+                <p style="color:#ff0;margin-top:8px;font-size:11px;">Combo Deals Available • Family Discount (Ironic) • Group Rates</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SPARKLE DIVIDER -->
+    <div class="sparkle-divider">✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦</div>
+
+    <!-- STATS -->
+    <div class="stats-bar">
+        <div class="stat">
+            <div class="stat-number" id="cases-won">0</div>
+            <div class="stat-label">Cases "Won"*</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number" id="tears">0</div>
+            <div class="stat-label">Opposing Counsel Tears</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number" id="coffees">0</div>
+            <div class="stat-label">Coffees This Week</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">100<span style="font-size:20px;">%</span></div>
+            <div class="stat-label">Peachy</div>
+        </div>
+    </div>
+
+    <!-- FLAME DIVIDER -->
+    <div class="flame-divider">🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥</div>
+
+    <!-- ABOUT -->
+    <div class="section">
+        <h2 class="section-title">Meet Maggie</h2>
+        <div class="about-section">
+            <div class="about-photo">🍑</div>
+            <div class="about-text">
+                <p>
+                    <span class="highlight">Maggie Peach</span> is a force of nature wrapped in a power suit.
+                    Armed with a law degree and an <span class="highlight">unshakeable moral compass</span>
+                    (that occasionally spins for dramatic effect), Maggie has dedicated her career to the pursuit
+                    of justice, liberty, and <span class="highlight">reasonable billing rates</span>.
+                </p>
+                <p>
+                    When she's not in the courtroom making prosecutors nervous, Maggie can be found
+                    doing lawyer things like... objecting to stuff and reading really long documents.
+                    She once read a 400-page contract <span class="highlight">IN ONE SITTING</span>.
+                    The opposing counsel hasn't been the same since.
+                </p>
+                <p>
+                    <span class="highlight">Fun fact:</span> Maggie has never lost a staring contest
+                    with a judge. The bailiff keeps a tally.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- GUARANTEE -->
+    <div class="section">
+        <div class="guarantee-box">
+            <h3>🏆 THE MAGGIE PEACH GUARANTEE 🏆</h3>
+            <p style="font-size:18px;color:#ff0;margin:10px 0;">
+                "I will represent you with the same intensity I use to argue about where to go for dinner."
+            </p>
+            <p>
+                — Maggie Peach, Esq., JD, GOAT, CEO of Justice™<br>
+                <span style="color:#666;font-size:9px;">
+                    *Guarantee is a vibe, not a legally binding promise. Results may vary.
+                    Past performance is not indicative of future results.
+                    Maggie Peach Law is not responsible for any emotional attachment you develop to your attorney.
+                </span>
+            </p>
+        </div>
+    </div>
+
+    <!-- TESTIMONIALS -->
+    <div class="section">
+        <h2 class="section-title">Testimonials</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                <div class="stars-rating">★★★★★</div>
+                <p>"Maggie got my charges dropped faster than I drop my phone. 11/10 would get arrested again just to hire her."</p>
+                <div class="author">— Jake M., Definitely Not A Criminal Anymore</div>
+            </div>
+            <div class="testimonial">
+                <div class="stars-rating">★★★★★</div>
+                <p>"During my divorce, Maggie negotiated so hard my ex actually apologized to ME. I didn't even ask for that. She just... did it."</p>
+                <div class="author">— Sandra K., Happily Unmarried</div>
+            </div>
+            <div class="testimonial">
+                <div class="stars-rating">★★★★★</div>
+                <p>"I hired Maggie for a traffic ticket and she somehow got me a tax refund??? I don't know how she did it but I'm not asking questions."</p>
+                <div class="author">— Devon R., Pleasantly Confused</div>
+            </div>
+            <div class="testimonial">
+                <div class="stars-rating">★★★★★★★★★★</div>
+                <p>"She walked into the courtroom and the judge just NODDED. That's it. Case closed. I think she might be magic."</p>
+                <div class="author">— Anonymous, Currently Free</div>
+            </div>
+        </div>
+        <p style="text-align:center;color:#666;font-size:9px;margin-top:15px;">
+            *These testimonials are 100% real and definitely not written by Maggie's mom.
+            Any resemblance to actual legal outcomes is purely coincidental.
+        </p>
+    </div>
+
+    <!-- AWARDS -->
+    <div class="award-section">
+        <h2 class="section-title">Awards & Honors</h2>
+        <div class="award">
+            <span class="trophy">🏆</span>
+            "Lawyer Most Likely<br>To Object To Everything"<br>
+            <em>— Her Law School Friends, 2024</em>
+        </div>
+        <div class="award">
+            <span class="trophy">⭐</span>
+            "#1 Attorney Named<br>After A Fruit"<br>
+            <em>— Definitely A Real Magazine</em>
+        </div>
+        <div class="award">
+            <span class="trophy">👑</span>
+            "Most Intimidating<br>Power Walk In Court"<br>
+            <em>— The Bailiff's Blog</em>
+        </div>
+        <div class="award">
+            <span class="trophy">🍑</span>
+            "Peach Of The Year"<br>
+            <em>— National Peach Council<br>(unaffiliated)</em>
+        </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="section">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <h4>Q: How much does a consultation cost?</h4>
+            <p>A: The first consultation is FREE*! (*Free means we will bill you for "administrative processing" which is a different thing entirely.)</p>
+        </div>
+        <div class="faq-item">
+            <h4>Q: Do you handle cases outside your practice areas?</h4>
+            <p>A: Maggie Peach doesn't believe in "outside her practice areas." She believes in JUSTICE, and justice knows no bounds. But also, probably not. Call and ask.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Q: What should I do if I get arrested?</h4>
+            <p>A: Step 1: Remain silent. Step 2: Call Maggie. Step 3: There is no step 3. Maggie handles it from here. Go ahead and relax.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Q: Is Maggie Peach her real name?</h4>
+            <p>A: Yes. The universe knew what it was doing. You don't get a name like Maggie Peach and become an accountant. It was destiny.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Q: Can I pay in installments?</h4>
+            <p>A: We accept cash, check, Venmo, Dogecoin, barter (case-by-case basis), and compliments (not actually, but they're appreciated).</p>
+        </div>
+    </div>
+
+    <!-- FLAME DIVIDER -->
+    <div class="flame-divider">🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥</div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+        <h2 class="section-title rainbow">Call Maggie NOW!!!</h2>
+        <p style="color:#ff69b4;font-size:14px;">Every second you wait, justice gets further away. Don't let justice ghost you.</p>
+        <span class="cta-phone">📞 1-800-PEACH-ME</span>
+        <br><br>
+        <a href="#" class="cta-button" onclick="alert('🍑 MAGGIE IS ON HER WAY 🍑\n\nEstimated arrival: IMMEDIATELY\n\nPlease remain calm and DO NOT talk to the police.\n\n⚖️ Justice is loading... ⚖️'); return false;">
+            ⚡ CLICK HERE FOR JUSTICE ⚡
+        </a>
+        <div class="cta-urgency">
+            ⚠️ WARNING: THIS OFFER EXPIRES WHEN MAGGIE GETS TIRED ⚠️
+        </div>
+    </div>
+
+    <!-- BADGES -->
+    <div class="badge-container">
+        <div class="badge">[ BUILT WITH NOTEPAD ]</div>
+        <div class="badge">[ BEST VIEWED AT 800x600 ]</div>
+        <div class="badge">[ NETSCAPE NAVIGATOR 4.0+ ]</div>
+        <div class="badge">[ Y2K COMPLIANT ]</div>
+        <div class="badge">[ JAVASCRIPT REQUIRED ]</div>
+        <div class="badge">[ NO AI WAS USED* ]</div>
+    </div>
+
+    <!-- GUESTBOOK -->
+    <div class="guestbook">
+        <a href="#" class="guestbook-btn" onclick="alert('📖 GUESTBOOK COMING SOON!\n\nMaggie is still figuring out how the internet works.\nPlease leave your message on her answering machine.'); return false;">
+            📖 Sign Our Guestbook!!! 📖
+        </a>
+    </div>
+
+    <!-- VISITOR COUNTER -->
+    <div class="visitor-counter">
+        <p>You are visitor number:</p>
+        <div class="counter-display" id="visitor-count">0000000</div>
+        <p>since January 1, 1997</p>
+    </div>
+
+    <!-- WEBRING -->
+    <div class="webring">
+        <a href="#" onclick="return false;">← Prev</a>
+        <span style="color:#ff0;">[ ⚖️ LawyerWebRing ⚖️ ]</span>
+        <a href="#" onclick="return false;">Next →</a>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <p>© 1997-2026 Maggie Peach Law. All Rights Reserved. And Some Lefts Too.</p>
+        <p>No peachs were harmed in the making of this website.</p>
+        <p>This site is not legal advice. Nothing is legal advice. Everything is legal chaos.</p>
+        <p>
+            <a href="#" onclick="return false;">Privacy Policy</a> |
+            <a href="#" onclick="return false;">Terms of Chaos</a> |
+            <a href="#" onclick="return false;">Sitemap</a> |
+            <a href="#" onclick="return false;">Maggie's MySpace</a>
+        </p>
+        <p style="margin-top:10px;">
+            Made with ❤️, Comic Sans, and questionable design choices<br>
+            <span style="font-size:8px;color:#333;">
+                Webmaster: Maggie's friend who "knows computers"
+            </span>
+        </p>
+    </div>
+
+</div>
+
+<script>
+// ===== FIRE CURSOR TRAIL =====
+const particles = [];
+const PARTICLE_COUNT = 20;
+
+document.addEventListener('mousemove', (e) => {
+    for (let i = 0; i < 3; i++) {
+        createFireParticle(e.clientX, e.clientY);
+    }
+});
+
+function createFireParticle(x, y) {
+    const particle = document.createElement('div');
+    particle.className = 'fire-particle';
+
+    const size = Math.random() * 15 + 5;
+    const colors = ['#ff0', '#ff6600', '#ff0000', '#ff3300', '#ffcc00'];
+    const color = colors[Math.floor(Math.random() * colors.length)];
+
+    particle.style.width = size + 'px';
+    particle.style.height = size + 'px';
+    particle.style.left = (x - size/2 + (Math.random() - 0.5) * 10) + 'px';
+    particle.style.top = (y - size/2) + 'px';
+    particle.style.background = `radial-gradient(circle, ${color}, transparent)`;
+    particle.style.boxShadow = `0 0 ${size}px ${color}`;
+
+    document.body.appendChild(particle);
+
+    const angle = -Math.PI/2 + (Math.random() - 0.5) * 1;
+    const speed = Math.random() * 2 + 1;
+    const vx = Math.cos(angle) * speed;
+    const vy = Math.sin(angle) * speed - 1;
+
+    let opacity = 1;
+    let currentX = parseFloat(particle.style.left);
+    let currentY = parseFloat(particle.style.top);
+    let currentSize = size;
+
+    function animate() {
+        opacity -= 0.03;
+        currentX += vx;
+        currentY += vy - 1;
+        currentSize *= 0.97;
+
+        particle.style.left = currentX + 'px';
+        particle.style.top = currentY + 'px';
+        particle.style.opacity = opacity;
+        particle.style.width = currentSize + 'px';
+        particle.style.height = currentSize + 'px';
+
+        if (opacity > 0) {
+            requestAnimationFrame(animate);
+        } else {
+            particle.remove();
+        }
+    }
+    requestAnimationFrame(animate);
+}
+
+// ===== STARS BACKGROUND =====
+const starsContainer = document.getElementById('stars');
+for (let i = 0; i < 150; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    const size = Math.random() * 3 + 1;
+    star.style.width = size + 'px';
+    star.style.height = size + 'px';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.animationDelay = Math.random() * 2 + 's';
+    star.style.animationDuration = (Math.random() * 2 + 1) + 's';
+    starsContainer.appendChild(star);
+}
+
+// ===== COUNTING ANIMATIONS =====
+function animateCounter(elementId, target, duration) {
+    const element = document.getElementById(elementId);
+    const start = 0;
+    const startTime = performance.now();
+
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(start + (target - start) * eased);
+        element.textContent = current.toLocaleString();
+
+        if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+}
+
+// Start counters when visible
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            animateCounter('cases-won', 847, 2000);
+            animateCounter('tears', 2341, 2500);
+            animateCounter('coffees', 47, 1500);
+            observer.disconnect();
+        }
+    });
+});
+observer.observe(document.querySelector('.stats-bar'));
+
+// ===== VISITOR COUNTER =====
+const visitorCount = Math.floor(Math.random() * 900000) + 100000;
+let displayCount = 0;
+const counterElement = document.getElementById('visitor-count');
+const counterInterval = setInterval(() => {
+    displayCount += Math.floor(Math.random() * 50000) + 10000;
+    if (displayCount >= visitorCount) {
+        displayCount = visitorCount;
+        clearInterval(counterInterval);
+    }
+    counterElement.textContent = String(displayCount).padStart(7, '0');
+}, 100);
+
+// ===== RANDOM SPARKLES ON CLICK =====
+document.addEventListener('click', (e) => {
+    for (let i = 0; i < 12; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.style.cssText = `
+            position: fixed;
+            left: ${e.clientX}px;
+            top: ${e.clientY}px;
+            width: 6px;
+            height: 6px;
+            background: ${['#ff0', '#ff6600', '#ff0000', '#00ffff', '#ff69b4'][Math.floor(Math.random() * 5)]};
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99998;
+            box-shadow: 0 0 6px currentColor;
+        `;
+        document.body.appendChild(sparkle);
+
+        const angle = (Math.PI * 2 / 12) * i;
+        const speed = Math.random() * 4 + 2;
+        let x = e.clientX, y = e.clientY, opacity = 1;
+
+        function animateSparkle() {
+            x += Math.cos(angle) * speed;
+            y += Math.sin(angle) * speed + 0.5;
+            opacity -= 0.025;
+            sparkle.style.left = x + 'px';
+            sparkle.style.top = y + 'px';
+            sparkle.style.opacity = opacity;
+            if (opacity > 0) requestAnimationFrame(animateSparkle);
+            else sparkle.remove();
+        }
+        requestAnimationFrame(animateSparkle);
+    }
+});
+
+// ===== KONAMI CODE EASTER EGG =====
+let konamiProgress = 0;
+const konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+document.addEventListener('keydown', (e) => {
+    if (e.keyCode === konamiCode[konamiProgress]) {
+        konamiProgress++;
+        if (konamiProgress === konamiCode.length) {
+            document.body.style.animation = 'spin 2s linear infinite';
+            alert('🍑🍑🍑 PEACH MODE ACTIVATED 🍑🍑🍑\n\nEverything is now 200% more peachy.\nThis cannot be undone.\nYou have been warned.');
+            konamiProgress = 0;
+        }
+    } else {
+        konamiProgress = 0;
+    }
+});
+
+// ===== TITLE BAR ANIMATION =====
+const titles = [
+    '★☆★ MAGGIE PEACH LAW ★☆★',
+    '⚖️ JUSTICE NEVER SLEEPS ⚖️',
+    '🍑 CALL 1-800-PEACH-ME 🍑',
+    '🔥 ATTORNEY AT RAW 🔥',
+    '🚨 DON\'T TALK TO THE COPS 🚨',
+];
+let titleIndex = 0;
+setInterval(() => {
+    document.title = titles[titleIndex];
+    titleIndex = (titleIndex + 1) % titles.length;
+}, 2000);
+</script>
+
+</body>
+</html>

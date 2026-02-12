@@ -36,12 +36,12 @@
         }
 
         /* ===== FIRE CURSOR ===== */
-        .fire-particle {
+        #fire-canvas {
             position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             pointer-events: none;
             z-index: 99999;
-            border-radius: 50%;
-            mix-blend-mode: screen;
         }
 
         /* ===== MAIN CONTENT ===== */
@@ -907,63 +907,101 @@
 </div>
 
 <script>
-// ===== FIRE CURSOR TRAIL =====
-const particles = [];
-const PARTICLE_COUNT = 20;
+// ===== FIRE CURSOR TRAIL (CANVAS) =====
+const fireCanvas = document.createElement('canvas');
+fireCanvas.id = 'fire-canvas';
+document.body.appendChild(fireCanvas);
+const ctx = fireCanvas.getContext('2d');
 
-document.addEventListener('mousemove', (e) => {
-    for (let i = 0; i < 3; i++) {
-        createFireParticle(e.clientX, e.clientY);
-    }
-});
-
-function createFireParticle(x, y) {
-    const particle = document.createElement('div');
-    particle.className = 'fire-particle';
-
-    const size = Math.random() * 15 + 5;
-    const colors = ['#ff0', '#ff6600', '#ff0000', '#ff3300', '#ffcc00'];
-    const color = colors[Math.floor(Math.random() * colors.length)];
-
-    particle.style.width = size + 'px';
-    particle.style.height = size + 'px';
-    particle.style.left = (x - size/2 + (Math.random() - 0.5) * 10) + 'px';
-    particle.style.top = (y - size/2) + 'px';
-    particle.style.background = `radial-gradient(circle, ${color}, transparent)`;
-    particle.style.boxShadow = `0 0 ${size}px ${color}`;
-
-    document.body.appendChild(particle);
-
-    const angle = -Math.PI/2 + (Math.random() - 0.5) * 1;
-    const speed = Math.random() * 2 + 1;
-    const vx = Math.cos(angle) * speed;
-    const vy = Math.sin(angle) * speed - 1;
-
-    let opacity = 1;
-    let currentX = parseFloat(particle.style.left);
-    let currentY = parseFloat(particle.style.top);
-    let currentSize = size;
-
-    function animate() {
-        opacity -= 0.03;
-        currentX += vx;
-        currentY += vy - 1;
-        currentSize *= 0.97;
-
-        particle.style.left = currentX + 'px';
-        particle.style.top = currentY + 'px';
-        particle.style.opacity = opacity;
-        particle.style.width = currentSize + 'px';
-        particle.style.height = currentSize + 'px';
-
-        if (opacity > 0) {
-            requestAnimationFrame(animate);
-        } else {
-            particle.remove();
-        }
-    }
-    requestAnimationFrame(animate);
+function resizeCanvas() {
+    fireCanvas.width = window.innerWidth;
+    fireCanvas.height = window.innerHeight;
 }
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+const MAX_PARTICLES = 80;
+const particles = [];
+const fireColors = ['#ffff00', '#ff6600', '#ff0000', '#ff3300', '#ffcc00'];
+const sparkleColors = ['#ffff00', '#ff6600', '#ff0000', '#00ffff', '#ff69b4'];
+
+function spawnFire(x, y, count) {
+    for (let i = 0; i < count && particles.length < MAX_PARTICLES; i++) {
+        const angle = -Math.PI/2 + (Math.random() - 0.5);
+        const speed = Math.random() * 2 + 1;
+        particles.push({
+            x: x + (Math.random() - 0.5) * 10,
+            y: y,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed - 1,
+            size: Math.random() * 15 + 5,
+            opacity: 1,
+            color: fireColors[Math.floor(Math.random() * fireColors.length)],
+            type: 'fire'
+        });
+    }
+}
+
+function spawnSparkles(x, y) {
+    for (let i = 0; i < 12 && particles.length < MAX_PARTICLES; i++) {
+        const angle = (Math.PI * 2 / 12) * i;
+        const speed = Math.random() * 4 + 2;
+        particles.push({
+            x, y,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed + 0.5,
+            size: 6,
+            opacity: 1,
+            color: sparkleColors[Math.floor(Math.random() * sparkleColors.length)],
+            type: 'sparkle'
+        });
+    }
+}
+
+function animateParticles() {
+    ctx.clearRect(0, 0, fireCanvas.width, fireCanvas.height);
+    ctx.globalCompositeOperation = 'screen';
+
+    for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy - (p.type === 'fire' ? 1 : 0);
+        p.opacity -= p.type === 'fire' ? 0.03 : 0.025;
+        if (p.type === 'fire') p.size *= 0.97;
+
+        if (p.opacity <= 0) {
+            particles.splice(i, 1);
+            continue;
+        }
+
+        ctx.globalAlpha = p.opacity;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size / 2, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.shadowColor = p.color;
+        ctx.shadowBlur = p.size;
+        ctx.fill();
+    }
+
+    ctx.globalAlpha = 1;
+    ctx.shadowBlur = 0;
+    requestAnimationFrame(animateParticles);
+}
+requestAnimationFrame(animateParticles);
+
+// Mouse/touch input
+let lastEmit = 0;
+function handleMove(x, y) {
+    const now = performance.now();
+    if (now - lastEmit < 30) return; // throttle to ~33fps input
+    lastEmit = now;
+    spawnFire(x, y, 3);
+}
+document.addEventListener('mousemove', (e) => handleMove(e.clientX, e.clientY));
+document.addEventListener('touchmove', (e) => {
+    const t = e.touches[0];
+    handleMove(t.clientX, t.clientY);
+}, { passive: true });
 
 // ===== STARS BACKGROUND =====
 const starsContainer = document.getElementById('stars');
@@ -1025,40 +1063,7 @@ const counterInterval = setInterval(() => {
 }, 100);
 
 // ===== RANDOM SPARKLES ON CLICK =====
-document.addEventListener('click', (e) => {
-    for (let i = 0; i < 12; i++) {
-        const sparkle = document.createElement('div');
-        sparkle.style.cssText = `
-            position: fixed;
-            left: ${e.clientX}px;
-            top: ${e.clientY}px;
-            width: 6px;
-            height: 6px;
-            background: ${['#ff0', '#ff6600', '#ff0000', '#00ffff', '#ff69b4'][Math.floor(Math.random() * 5)]};
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 99998;
-            box-shadow: 0 0 6px currentColor;
-        `;
-        document.body.appendChild(sparkle);
-
-        const angle = (Math.PI * 2 / 12) * i;
-        const speed = Math.random() * 4 + 2;
-        let x = e.clientX, y = e.clientY, opacity = 1;
-
-        function animateSparkle() {
-            x += Math.cos(angle) * speed;
-            y += Math.sin(angle) * speed + 0.5;
-            opacity -= 0.025;
-            sparkle.style.left = x + 'px';
-            sparkle.style.top = y + 'px';
-            sparkle.style.opacity = opacity;
-            if (opacity > 0) requestAnimationFrame(animateSparkle);
-            else sparkle.remove();
-        }
-        requestAnimationFrame(animateSparkle);
-    }
-});
+document.addEventListener('click', (e) => spawnSparkles(e.clientX, e.clientY));
 
 // ===== KONAMI CODE EASTER EGG =====
 let konamiProgress = 0;
